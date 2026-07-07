@@ -83,26 +83,24 @@ jobs:
         Write-Host "Configuring Chrome with security extensions..." -ForegroundColor Green
         
         # Create Chrome preferences for extensions
-        $ChromePrefs = @"
-{
-  "extensions": {
-    "settings": {
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm": {
-        "state": 1,
-        "was_installed_by_default": false,
-        "was_installed_by_oem": false,
-        "was_installed_by_custodian": false,
-        "creation_flags": 1,
-        "location": 1,
-        "manifest": {
-          "name": "uBlock Origin",
-          "version": "1.0"
-        }
-      }
-    }
-  }
-}
-"@
+        $ChromePrefs = '{
+          "extensions": {
+            "settings": {
+              "cjpalhdlnbpafiamejdnhcphjbkeiagm": {
+                "state": 1,
+                "was_installed_by_default": false,
+                "was_installed_by_oem": false,
+                "was_installed_by_custodian": false,
+                "creation_flags": 1,
+                "location": 1,
+                "manifest": {
+                  "name": "uBlock Origin",
+                  "version": "1.0"
+                }
+              }
+            }
+          }
+        }'
         
         $ChromeDir = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default"
         if (!(Test-Path $ChromeDir)) {
